@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Data Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold text-center mb-6">📋 Client Data Portal</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+    <input id="search-name" type="text" placeholder="Search by Name" class="p-2 border rounded w-full"/>
+    <input id="search-email" type="text" placeholder="Search by Email" class="p-2 border rounded w-full"/>
+    <input id="search-phone" type="text" placeholder="Search by Phone" class="p-2 border rounded w-full"/>
+    <input id="search-room" type="text" placeholder="Search by Room" class="p-2 border rounded w-full"/>
+  </div>
+
+  <!-- Loading Bar -->
+  <div id="loading" class="mb-4">
+    <div class="h-2 w-full bg-gray-300 rounded">
+      <div class="h-2 bg-blue-500 animate-pulse rounded" style="width: 50%"></div>
+    </div>
+  </div>
+
+  <!-- Result Count -->
+  <div id="result-count" class="mb-2 text-sm font-medium text-gray-600 hidden"></div>
+
+  <!-- Buttons -->
+  <div class="flex flex-wrap gap-2 justify-end items-center mb-4">
+    <button onclick="cleanData()" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600">
+      🧹 Clean Data
+    </button>
+    <button onclick="removeDuplicates()" class="bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600">
+      ❌ Remove Duplicates
+    </button>
+    <button onclick="exportCSV()" class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700">
+      📥 Export CSV
+    </button>
+  </div>
+
+  <!-- Table -->
+  <table class="min-w-full table-auto text-left">
+    <thead class="bg-gray-200 text-gray-700">
+      <tr>
+        <th class="p-3">#</th>
+        <th class="p-3">First Name</th>
+        <th class="p-3">Last Name</th>
+        <th class="p-3">Email</th>
+        <th class="p-3">Phone</th>
+        <th class="p-3">Room</th>
+      </tr>
+    </thead>
+    <tbody id="client-table-body"></tbody>
+  </table>
+
+  <div id="no-results" class="p-4 text-red-600 font-semibold hidden">⚠️ No results found.</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
